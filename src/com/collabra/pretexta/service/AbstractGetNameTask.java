@@ -81,7 +81,7 @@ public abstract class AbstractGetNameTask extends AsyncTask<Void, Void, Void>{
      * @throws IOException if communication with user info server failed.
      * @throws JSONException if the response from the server could not be parsed.
      */
-    private void fetchNameFromProfileServer() throws IOException, JSONException {
+    protected void fetchNameFromProfileServer() throws IOException, JSONException {
         String token = fetchToken();
         if (token == null) {
           // error has already been handled in fetchToken()

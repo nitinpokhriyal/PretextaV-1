@@ -34,6 +34,7 @@ import com.collabra.pretexta.R.id;
 import com.collabra.pretexta.R.layout;
 import com.collabra.pretexta.service.AbstractGetNameTask;
 import com.collabra.pretexta.service.GetNameInBackground;
+import com.collabra.pretexta.service.GmailMessageTask;
 import com.google.android.gms.auth.GoogleAuthUtil;
 import com.google.android.gms.auth.GooglePlayServicesAvailabilityException;
 import com.google.android.gms.auth.UserRecoverableAuthException;
@@ -49,7 +50,7 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
  */
 public class AuthActivity extends Activity {
     private static final String TAG = "PlayHelloActivity";
-    private static final String SCOPE = "oauth2:https://www.googleapis.com/auth/userinfo.profile";
+    private static final String SCOPE = "oauth2:https://www.googleapis.com/auth/gmail.readonly";
     public static final String EXTRA_ACCOUNTNAME = "extra_accountname";
 
     private TextView mOut;
@@ -214,7 +215,7 @@ public class AuthActivity extends Activity {
             case BACKGROUND_WITH_SYNC:
                 return new GetNameInBackgroundWithSync(activity, email, scope);
             default:*/
-                return new GetNameInBackground(activity, email, scope);
+                return new GmailMessageTask(activity, email, scope);
        // }
     }
 }

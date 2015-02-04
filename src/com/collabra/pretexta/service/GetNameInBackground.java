@@ -19,15 +19,26 @@ package com.collabra.pretexta.service;
 import com.collabra.pretexta.activity.AuthActivity;
 import com.google.android.gms.auth.GoogleAuthException;
 import com.google.android.gms.auth.GoogleAuthUtil;
+import com.google.android.gms.auth.UserRecoverableAuthException;
 import com.google.android.gms.auth.UserRecoverableNotifiedException;
+import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
+import com.google.api.client.http.HttpTransport;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.JsonFactory;
+import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.services.gmail.Gmail;
+import com.google.api.services.gmail.model.ListMessagesResponse;
+import com.google.api.services.gmail.model.Message;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * This example shows how to fetch tokens if you are creating a background task. It also shows how
@@ -85,5 +96,6 @@ public class GetNameInBackground extends AbstractGetNameTask {
         Log.i(TAG, "Received broadcast. Resurrecting activity");
         context.startActivity(intent);
     }
-}
+  }
+		
 }
