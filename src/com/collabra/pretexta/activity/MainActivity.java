@@ -16,26 +16,43 @@
 
 package com.collabra.pretexta.activity;
 
+import java.io.IOException;
+
+import android.app.Activity;
 import android.app.ListActivity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.collabra.pretexta.R;
+import com.collabra.pretexta.db.DataBaseHelper;
+import com.collabra.pretexta.service.SchedulerTask;
 
-public class MainActivity extends ListActivity {
+public class MainActivity extends Activity {
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        String[] items = getResources().getStringArray(R.array.main_activity_items);
-        this.setListAdapter(
-                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items));
+        //String[] items = getResources().getStringArray(R.array.main_activity_items);
+       // this.setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items));
+        
+        setContentView(R.layout.main);
+        
+        DataBaseHelper helper= new DataBaseHelper(this);
+        try {
+			helper.createDataBase();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			Log.e("Pretexta-MainActivity", "Error reading database");
+			e.printStackTrace();
+		}
     }
 
-    @Override
+   /* @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         // Highly coupled with the order of contents in main_activity_items
         Intent intent = new Intent(this, AuthActivity.class);
@@ -47,5 +64,12 @@ public class MainActivity extends ListActivity {
             intent.putExtra(AuthActivity.TYPE_KEY, AuthActivity.Type.BACKGROUND_WITH_SYNC.name());
         }
         startActivity(intent);
+    }*/
+    
+    public void syncData(View v){
+    	Context ctx=v.getContext();
+    	Intent intent1=new Intent(ctx, SchedulerTask.class);
+		intent1.putExtra("nitin", "start service");
+		this.startService(intent1);
     }
 }

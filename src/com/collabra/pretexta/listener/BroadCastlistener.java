@@ -10,13 +10,17 @@ import java.util.Date;
 
 
 
+
+
 import com.collabra.pretexta.R;
 import com.collabra.pretexta.R.drawable;
+import com.collabra.pretexta.db.DataBaseHelper;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.net.Uri;
@@ -54,7 +58,7 @@ public class BroadCastlistener extends BroadcastReceiver {
             	 String incomingNumber = arg1.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER);
                //  Toast.makeText(context, "Call from:" +incomingNumber, Toast.LENGTH_LONG).show();
                  callDetails=getContactIdFromNumber(incomingNumber,context);
-                 smsDetails=getSMSDetails(incomingNumber,context);
+                // smsDetails=getSMSDetails(incomingNumber,context);
                  wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
                  params1 = new WindowManager.LayoutParams(
                          LayoutParams.MATCH_PARENT,
@@ -155,7 +159,29 @@ public class BroadCastlistener extends BroadcastReceiver {
                  }
              }
          }
+     
+     
      private String getContactIdFromNumber(String contactNumber, Context context) {
+			StringBuilder callLogInfo=new StringBuilder();
+			DataBaseHelper helper= new DataBaseHelper(context);
+			SQLiteDatabase sqlLiteDB= helper.getReadableDatabase();
+			Cursor cursor =sqlLiteDB.rawQuery("select lastspoken,duration,phone from Contactsync where phone=?",new String[]{contactNumber});
+			Log.i("phone found" ,cursor.getCount()+"");
+			while (cursor.moveToNext()) {
+				 String phNumber = cursor.getString(cursor.getColumnIndex("phone"));
+			        
+				 Long lastSpoken = cursor.getLong(cursor.getColumnIndex("lastspoken"));
+				 Integer duration = cursor.getInt(cursor.getColumnIndex("duration"));
+				 Date callDayTime = new Date(lastSpoken);
+				 callLogInfo.append("LastSpoken :" + callDayTime +", Duration :" + duration);
+			}
+		    return callLogInfo.toString();
+		}
+
+     
+     
+     
+   /*  private String getContactIdFromNumber(String contactNumber, Context context) {
 			StringBuilder callLogInfo=new StringBuilder();
 			Cursor cursor = context.getContentResolver().query(
 					CallLog.Calls.CONTENT_URI,
@@ -212,7 +238,8 @@ public class BroadCastlistener extends BroadcastReceiver {
 			//   addInvitePopup(contactNumber,mContext);
 		    return callLogInfo.toString();
 		}
-	
+*/	
+
      private String getSMSDetails(String contactNumber,Context context) {
          StringBuffer stringBuffer = new StringBuffer();
        //  stringBuffer.append("*********SMS History*************** :");

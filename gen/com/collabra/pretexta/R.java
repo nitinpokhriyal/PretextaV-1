@@ -475,7 +475,7 @@ containing a value of this type.
         public static final int powered_by_google_light=0x7f020022;
     }
     public static final class id {
-        public static final int action_settings=0x7f0d0019;
+        public static final int action_settings=0x7f0d001a;
         public static final int adjust_height=0x7f0d0000;
         public static final int adjust_width=0x7f0d0001;
         public static final int book_now=0x7f0d0010;
@@ -499,6 +499,7 @@ containing a value of this type.
         public static final int satellite=0x7f0d0005;
         public static final int selectionDetails=0x7f0d000d;
         public static final int strict_sandbox=0x7f0d000b;
+        public static final int syncservice=0x7f0d0019;
         public static final int terrain=0x7f0d0006;
         public static final int wrap_content=0x7f0d000f;
     }
@@ -516,7 +517,7 @@ containing a value of this type.
     }
     public static final class string {
         public static final int accept=0x7f070002;
-        public static final int account=0x7f070027;
+        public static final int account=0x7f070028;
         public static final int action_settings=0x7f070025;
         public static final int app_name=0x7f070023;
         /**   Text for notification shown when the Android Wear apps needs to be updated. Only shown on the wearable. [CHAR LIMIT=NONE] 
@@ -623,6 +624,7 @@ containing a value of this type.
         public static final int decline=0x7f070003;
         public static final int greetme=0x7f070026;
         public static final int hello_world=0x7f070024;
+        public static final int startsync=0x7f070027;
         public static final int store_picture_message=0x7f070001;
         public static final int store_picture_title=0x7f070000;
         /**  Text on a placeholder buy button when Google Play services is not

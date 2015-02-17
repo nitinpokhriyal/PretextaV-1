@@ -104,7 +104,7 @@ int drawable ic_plusone_tall_off_client 0x7f02001f
 int drawable phone 0x7f020020
 int drawable powered_by_google_dark 0x7f020021
 int drawable powered_by_google_light 0x7f020022
-int id action_settings 0x7f0d0019
+int id action_settings 0x7f0d001a
 int id adjust_height 0x7f0d0000
 int id adjust_width 0x7f0d0001
 int id book_now 0x7f0d0010
@@ -128,6 +128,7 @@ int id sandbox 0x7f0d000a
 int id satellite 0x7f0d0005
 int id selectionDetails 0x7f0d000d
 int id strict_sandbox 0x7f0d000b
+int id syncservice 0x7f0d0019
 int id terrain 0x7f0d0006
 int id wrap_content 0x7f0d000f
 int integer google_play_services_version 0x7f090000
@@ -135,7 +136,7 @@ int layout main 0x7f030000
 int menu main 0x7f0c0000
 int raw gtm_analytics 0x7f050000
 int string accept 0x7f070002
-int string account 0x7f070027
+int string account 0x7f070028
 int string action_settings 0x7f070025
 int string app_name 0x7f070023
 int string common_android_wear_notification_needs_update_text 0x7f070009
@@ -171,6 +172,7 @@ int string create_calendar_title 0x7f070004
 int string decline 0x7f070003
 int string greetme 0x7f070026
 int string hello_world 0x7f070024
+int string startsync 0x7f070027
 int string store_picture_message 0x7f070001
 int string store_picture_title 0x7f070000
 int string wallet_buy_button_place_holder 0x7f070022
